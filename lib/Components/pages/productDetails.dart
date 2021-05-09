@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:productfinder/Components/pages/locationPage.dart';
 import 'package:productfinder/Components/pages/viewLocation.dart';
+import 'package:productfinder/Components/services/urlLauncherServices.dart';
 
 class ProductDetails extends StatefulWidget {
   final String product_detail_name;
@@ -67,83 +69,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
 
           // ===== Size Wuantity and Color Buttomn=====
-          Row(
-            children: [
-              Expanded(
-                child: MaterialButton(
-                  color: Colors.white,
-                  textColor: Colors.grey,
-                  onPressed: (){
-                    showDialog(context: context, builder: (context){
-                      return AlertDialog(
-                        title: Text("Size"),
-                        content: Text("Choose the Size"),
-                        actions: [
-                          MaterialButton(onPressed: (){Navigator.of(context).pop(context);}, child: Text("Close"),)
-                        ],
-                      );
-                    });
-                  },
-                  child: Row(
-                    children: [
-                      Expanded(child: Text("Size")),
-                      Expanded(child: Icon(Icons.arrow_drop_down))
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: MaterialButton(
-                  color: Colors.white,
-                  textColor: Colors.grey,
-                  onPressed: (){
-                   showDialog(context: context, builder: (context){
-                     return AlertDialog(
-                       title: Text("Color"),
-                       content: Text("Choose Color"),
-                       actions: [
-                         MaterialButton(onPressed: (){
-                           Navigator.of(context).pop(context);
-                         }, child: Text("Close"),)
-                       ],
-                     );
-                   });
-                  },
-                  child: Row(
-                    children: [
-                      Expanded(child: Text("Color")),
-                      Expanded(child: Icon(Icons.arrow_drop_down))
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: MaterialButton(
-                  color: Colors.white,
-                  textColor: Colors.grey,
-                  onPressed: (){
-                    showDialog(context: context, builder: (context){
-                      return AlertDialog(
-                        title: Text("Qty"),
-                        content: Text("Choose Quantity"),
-                        actions: [
-                          MaterialButton(onPressed: (){
-                            Navigator.of(context).pop(context);
-                          }, child: Text("Close"),)
-                        ],
-                      );
-                    });
-                  },
-                  child: Row(
-                    children: [
-                      Expanded(child: Text("Qty")),
-                      Expanded(child: Icon(Icons.arrow_drop_down))
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+
 
           // ==================Second  buy button=============
 
@@ -154,14 +80,18 @@ class _ProductDetailsState extends State<ProductDetails> {
               color: Colors.indigo,
               textColor: Colors.white,
               onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LocationDetail()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MapsDemo()));
               },
               child: Text("View Location"),
             ),
           ),
 
-          IconButton(icon: Icon(Icons.call), color: Colors.indigo,onPressed: (){}),
-          IconButton(icon: Icon(Icons.email),color: Colors.indigo, onPressed: (){})
+          IconButton(icon: Icon(Icons.call), color: Colors.indigo,onPressed: (){
+            Utils.openPhoneCall(phoneNumber: '+263774539645');
+          }),
+          IconButton(icon: Image.asset("images/icons/whatsApp.png", height: 400, width: 400,fit: BoxFit.contain,),color: Colors.indigo, onPressed: (){
+            launchWhatsApp(number: "+263774539645", message: "hello i am interested in your product");
+          })
         ],
       ),
       ListTile(

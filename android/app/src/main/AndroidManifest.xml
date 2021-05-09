@@ -3,6 +3,8 @@
    <application
         android:label="productfinder"
         android:icon="@mipmap/ic_launcher">
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyClAQ_oM7HlrszbfavUCvPN0T3glKiVPw0"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -37,6 +39,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
 
     </application>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

@@ -11,7 +11,7 @@ class _Shopping_cartState extends State<Shopping_cart> {
   Widget build(BuildContext context) {
     return Scaffold(
      appBar: AppBar(
-        title: Text("Shopping Cart"),
+        title: Text("Favourites"),
         centerTitle: true,
         backgroundColor: Colors.indigo,
 

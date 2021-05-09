@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:productfinder/Components/horizontal_listview.dart';
+import 'package:productfinder/Components/pages/login.dart';
 import 'package:productfinder/Components/pages/shoppingCart.dart';
 import 'package:productfinder/Components/product.dart';
 class HomePage extends StatefulWidget {
@@ -10,6 +12,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GoogleSignIn googleSignIn = new GoogleSignIn();
+
+  void signOutGoogle() async{
+    await googleSignIn.signOut();
+    print("User Sign Out");
+  }
+
+
   @override
   Widget build(BuildContext context) {
     Widget image_Carousel = Container(
@@ -42,7 +52,8 @@ class _HomePageState extends State<HomePage> {
 
         actions: [
           IconButton(icon: Icon(Icons.search), onPressed: (){}),
-          IconButton(icon: Icon(Icons.shopping_cart), onPressed: (){
+          IconButton(icon: Icon(Icons.favorite), onPressed: (){
+            //-------------------------- Directs to favorites ----------------------------------
             Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Shopping_cart()));
           })
         ],
@@ -51,7 +62,7 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(accountName: Text("Tatenda Beta"), accountEmail: Text("tatsbeta@gmail.com"), currentAccountPicture: GestureDetector(
+            UserAccountsDrawerHeader(accountName: Text("Tatenda Beta"), accountEmail: Text("bwizbwoi@gmail.com"), currentAccountPicture: GestureDetector(
               child: CircleAvatar(backgroundImage: AssetImage("images/beta.jpeg"),),
             ),),
 
@@ -62,34 +73,11 @@ class _HomePageState extends State<HomePage> {
                     leading: Icon(Icons.home)
                 )),
 
-            InkWell(
-                onTap: (){},
-                child: ListTile(
-                  title: Text("My Account"),
-                  leading: Icon(Icons.person),
-                )
-            ),
-
-            InkWell(
-              onTap:(){} ,
-              child: ListTile(
-                title: Text("My Order"),
-                leading: Icon(Icons.shopping_basket),
-              ),
-            ),
 
             InkWell(
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Shopping_cart()));
               },
-              child: ListTile(
-                title: Text("Shopping Cart"),
-                leading: Icon(Icons.shopping_cart),
-              ),
-            ),
-
-            InkWell(
-              onTap: (){},
               child: ListTile(
                 title: Text("Favourites"),
                 leading: Icon(Icons.favorite),
@@ -110,6 +98,17 @@ class _HomePageState extends State<HomePage> {
               child: ListTile(
                 title: Text("About"),
                 leading: Icon(Icons.help, color: Colors.blue,),
+              ),
+            ),
+
+            InkWell(
+              onTap: (){
+                signOutGoogle();
+                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Login()));
+              },
+              child: ListTile(
+                title: Text("LogOut"),
+                leading: Icon(Icons.logout, color: Colors.blue,),
               ),
             ),
 
