@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -6,6 +7,7 @@ import 'package:productfinder/Components/horizontal_listview.dart';
 import 'package:productfinder/Components/pages/login.dart';
 import 'package:productfinder/Components/pages/shoppingCart.dart';
 import 'package:productfinder/Components/product.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -13,6 +15,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final GoogleSignIn googleSignIn = new GoogleSignIn();
+// triaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaalll
+//   final FirebaseAuth _auth = FirebaseAuth.instance;
+//
+//
+
+// end ehhhhhhhhhhhhhheeeeeeeeeeeeeeeeeeeeeeeeeeeeereeeeeeeeeeeeeeee
 
   void signOutGoogle() async{
     await googleSignIn.signOut();
@@ -22,6 +30,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     Widget image_Carousel = Container(
       height: 200,
 
@@ -61,8 +72,9 @@ class _HomePageState extends State<HomePage> {
 
       drawer: Drawer(
         child: ListView(
+          shrinkWrap: true,
           children: [
-            UserAccountsDrawerHeader(accountName: Text("Tatenda Beta"), accountEmail: Text("bwizbwoi@gmail.com"), currentAccountPicture: GestureDetector(
+            UserAccountsDrawerHeader(accountName: Text("TatendaBeta"), accountEmail: Text("bwizbwoi@gmail.com"), currentAccountPicture: GestureDetector(
               child: CircleAvatar(backgroundImage: AssetImage("images/beta.jpeg"),),
             ),),
 
@@ -117,7 +129,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: [
-          image_Carousel,
+          //image_Carousel,
 //  HROIZONTAL LIST VIEW CATEGORIES
           Padding(padding: EdgeInsets.all(8), child: Text("Categories"),),
           Container(height: 100,child: HorizontalList()),
@@ -128,7 +140,9 @@ class _HomePageState extends State<HomePage> {
             child: Text("Available Products"),
           ),
           // grid view of available products
-          Container(height:200,child: Products())
+          Container(constraints: BoxConstraints(
+            maxHeight: 500,
+          ),child: Products())
         ],
       ),
     );

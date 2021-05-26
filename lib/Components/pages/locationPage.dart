@@ -53,7 +53,8 @@ class MapsDemoState extends State<MapsDemo> {
       _markers.add(
         Marker(
           markerId: MarkerId(_lastMapPosition.toString()),
-          position: _lastMapPosition,
+          // check to change the marker position
+          position: LatLng(-17.827,  31.01194),//_lastMapPosition,
           infoWindow: InfoWindow(
             title: 'This is a Title',
             snippet: 'This is a snippet',

@@ -6,13 +6,11 @@ import 'package:productfinder/Components/services/urlLauncherServices.dart';
 class ProductDetails extends StatefulWidget {
   final String product_detail_name;
   final String product_detail_picture;
-  final String product_detail_oldprice;
   final String product_detail_newprice;
 
   ProductDetails(
       {this.product_detail_name,
       this.product_detail_picture,
-      this.product_detail_oldprice,
       this.product_detail_newprice});
 
   @override
@@ -39,8 +37,9 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: GridTile(
               child: Container(
                 color: Colors.white,
-                child: Image.asset(widget.product_detail_picture),
-              ),
+                child: Image(
+                    image:NetworkImage(widget.product_detail_picture),
+              )),
               footer: Container(
                 color: Colors.white70,
                 child: ListTile(
@@ -51,14 +50,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                   title: Row(
                     children: [
                       Expanded(
-                          child: Text(
-                        "${widget.product_detail_oldprice}",
-                        style: TextStyle(
-                             fontSize: 20, decoration: TextDecoration.lineThrough),
-                      )),
-                      Expanded(
-                        child: Text("${widget.product_detail_newprice}", style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red )),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 200),
+                          child: Text("\$ ${widget.product_detail_newprice}", style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red )),
+                        ),
                       )
                     ],
                   ),
@@ -139,30 +135,26 @@ class SimilarProducts extends StatefulWidget {
 
 class _SimilarProductsState extends State<SimilarProducts> {
   var product_List = [
-    {
-      "name": "Headphones",
-      "picture": "images/gadgets/headphones.jpg",
-      "old_price": 22,
-      "price": 35
-    },
-    {
-      "name": "Printers",
-      "picture": "images/gadgets/hpprinter.jpg",
-      "old_price": 22,
-      "price": 35
-    },
-    {
-      "name": "Speakers",
-      "picture": "images/gadgets/muzilispeaker.jpg",
-      "old_price": 22,
-      "price": 35
-    },
-    {
-      "name": "Watch",
-      "picture": "images/gadgets/watch4.jpg",
-      "old_price": 22,
-      "price": 35
-    },
+    // {
+    //   "name": "Headphones",
+    //   "picture": "images/gadgets/headphones.jpg",
+    //   "price": 35
+    // },
+    // {
+    //   "name": "Printers",
+    //   "picture": "images/gadgets/hpprinter.jpg",
+    //   "price": 35
+    // },
+    // {
+    //   "name": "Speakers",
+    //   "picture": "images/gadgets/muzilispeaker.jpg",
+    //   "price": 35
+    // },
+    // {
+    //   "name": "Watch",
+    //   "picture": "images/gadgets/watch4.jpg",
+    //   "price": 35
+    // },
   ];
 
   @override
@@ -173,10 +165,9 @@ class _SimilarProductsState extends State<SimilarProducts> {
         SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
           return Similar_single_product(
-            prod_name: product_List[index]['name'],
-            prod_picture: product_List[index]['picture'],
-            prod_oldprice: product_List[index]['old_price'],
-            prod_price: product_List[index]['price'],
+            prod_name: product_List[index]['productName'],
+            prod_picture: product_List[index]['Link'],
+            prod_price: product_List[index]['productPrice'],
           );
         });
   }
@@ -185,11 +176,10 @@ class _SimilarProductsState extends State<SimilarProducts> {
 class Similar_single_product extends StatelessWidget {
   final String prod_name;
   final String prod_picture;
-  final int prod_oldprice;
   final int prod_price;
 
   Similar_single_product(
-      {this.prod_name, this.prod_picture, this.prod_oldprice, this.prod_price});
+      {this.prod_name, this.prod_picture, this.prod_price});
 
   @override
   Widget build(BuildContext context) {
@@ -203,7 +193,6 @@ class Similar_single_product extends StatelessWidget {
                   // WE ARE PASSING VALUES OF PRODUCT TO THE PRODUCT DETAIL
                   product_detail_name: prod_name,
                   product_detail_picture: prod_picture,
-                  product_detail_oldprice: "$prod_oldprice",
                   product_detail_newprice: "$prod_price",
                 ))),
             child: GridTile(
@@ -223,8 +212,8 @@ class Similar_single_product extends StatelessWidget {
                   ),
                 ),
               ),
-              child: Image.asset(
-                prod_picture,
+              child: Image(
+                image: NetworkImage(prod_picture),
                 fit: BoxFit.cover,
               ),
             ),
