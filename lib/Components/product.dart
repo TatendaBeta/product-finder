@@ -9,44 +9,7 @@ class  Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
-  var product_List = [
-    // {
-    //   "name": "Desktop",
-    //   "picture": "images/gadgets/computer-all-in-one-png-7.png",
-    //   "old_price": 22,
-    //   "price": 35
-    // },
-    // {
-    //   "name": "Camera",
-    //   "picture": "images/gadgets/camera2.jpg",
-    //   "old_price": 22,
-    //   "price": 35
-    // },
-    // {
-    //   "name": "Headphone",
-    //   "picture": "images/gadgets/headphones.jpg",
-    //   "old_price": 22,
-    //   "price": 35
-    // },
-    // {
-    //   "name": "Printers",
-    //   "picture": "images/gadgets/hpprinter.jpg",
-    //   "old_price": 22,
-    //   "price": 35
-    // },
-    // {
-    //   "name": "Speakers",
-    //   "picture": "images/gadgets/muzilispeaker.jpg",
-    //   "old_price": 22,
-    //   "price": 35
-    // },
-    // {
-    //   "name": "Watch",
-    //   "picture": "images/gadgets/watch4.jpg",
-    //   "old_price": 22,
-    //   "price": 35
-    // },
-  ];
+  var product_List = [];
 
   @override
   void initState() {
