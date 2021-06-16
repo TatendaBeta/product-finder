@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:productfinder/Components/horizontal_listview.dart';
 import 'package:productfinder/Components/pages/login.dart';
 import 'package:productfinder/Components/pages/search.dart';
+import 'package:productfinder/Components/pages/search2Trial.dart';
 import 'package:productfinder/Components/pages/shoppingCart.dart';
 import 'package:productfinder/Components/product.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> {
 
         actions: [
           IconButton(icon: Icon(Icons.search), onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CloudFirestoreSearch()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>search2trial()));
           }),
           IconButton(icon: Icon(Icons.favorite), onPressed: (){
             //-------------------------- Directs to favorites ----------------------------------

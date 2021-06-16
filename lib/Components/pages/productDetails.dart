@@ -64,9 +64,6 @@ class _ProductDetailsState extends State<ProductDetails> {
           ),
 
 
-          // ===== Size Wuantity and Color Buttomn=====
-
-
           // ==================Second  buy button=============
 
       Row(
@@ -134,28 +131,7 @@ class SimilarProducts extends StatefulWidget {
 }
 
 class _SimilarProductsState extends State<SimilarProducts> {
-  var product_List = [
-    // {
-    //   "name": "Headphones",
-    //   "picture": "images/gadgets/headphones.jpg",
-    //   "price": 35
-    // },
-    // {
-    //   "name": "Printers",
-    //   "picture": "images/gadgets/hpprinter.jpg",
-    //   "price": 35
-    // },
-    // {
-    //   "name": "Speakers",
-    //   "picture": "images/gadgets/muzilispeaker.jpg",
-    //   "price": 35
-    // },
-    // {
-    //   "name": "Watch",
-    //   "picture": "images/gadgets/watch4.jpg",
-    //   "price": 35
-    // },
-  ];
+  var product_List = [];
 
   @override
   Widget build(BuildContext context) {
